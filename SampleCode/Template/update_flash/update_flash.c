@@ -168,6 +168,8 @@ int32_t update_ap_OnSRAM(void)
 
     __set_PRIMASK(0);
 
+	SYS_UnlockReg();
+    FMC_Open();
     SYS_ResetChip();
 
     return resp_w;
