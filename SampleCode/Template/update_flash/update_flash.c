@@ -19,7 +19,7 @@ struct flag_32bit flag_UPDATE_FLASH_CTL;
 #define FLAG_UPDATE_FLASH_REVERSE7                  		(flag_UPDATE_FLASH_CTL.bit7)
 
 /*_____ D E F I N I T I O N S ______________________________________________*/
-uint8_t rcv_buffer[64] = {0};
+
 
 uint32_t size_addr = APP2_ADDR;
 
@@ -27,7 +27,7 @@ uint32_t size_addr = APP2_ADDR;
 extern void *__Vectors;                         /* see startup file */
 #define VECTPR_SRAM_LEN                                    (0x200) // 0x200
 uint8_t u8Vectors_SRAM[VECTPR_SRAM_LEN] __attribute__((section("VectorSection")));
-// uint8_t u8Flash_SRAM[FMC_FLASH_PAGE_SIZE] = {0};
+
 /*_____ M A C R O S ________________________________________________________*/
 
 /*_____ F U N C T I O N S __________________________________________________*/
@@ -195,7 +195,6 @@ void Remap_ISR_OnSRAM(void)
         /* set VECMAP to SRAM */
         FMC_SetVectorPageAddr((uint32_t)&u8Vectors_SRAM);
 
-        // SYS_ResetCPU();
 
         /* Disable FMC ISP function */
         FMC_Close();
@@ -209,27 +208,7 @@ void Remap_ISR_OnSRAM(void)
     }
 }
 
-// void LOCK_FLASH(void)
-// {
-//     FMC_DISABLE_AP_UPDATE();
-//     FMC_Close();
-//     SYS_LockReg();  
-//     __enable_irq();
-// }
 
-// void UNLOCK_FLASH(void)
-// {
-//     __disable_irq();
-
-//     /* Unlock protected registers to operate FMC ISP function */
-//     SYS_UnlockReg();
-
-// 	/* Enable FMC ISP function */
-// 	FMC_Open();
-	
-//     /* Enable APROM erase/program */
-// 	FMC_ENABLE_AP_UPDATE();
-// }
 
 unsigned char update_ap_check(void)
 {
