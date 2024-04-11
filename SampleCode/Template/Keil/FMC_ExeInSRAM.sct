@@ -1,0 +1,40 @@
+FLASH 0x00000000
+{
+	ER_STARTUP +0
+	{
+		startup_M031Series.o(RESET, +FIRST)
+	}
+	ER_RO +0
+    {
+        *(+RO)
+    }
+	
+    VECTORS_SRAM 0x20000000 0x200 {
+        *(VectorSection)
+    }
+	
+	FASTCODE_INIT +0
+	{
+        fmc.o(+RO)
+        uart.o(+RO)
+		retarget.o(+RO)
+		
+		uidiv.o(+RO)
+		memcpya.o(+RO)
+		uldiv.o(+RO)
+		llshl.o(+RO)
+		llushr.o(+RO)
+		printf8.o(+RO)		
+		
+		update_flash.o(+RO)		
+		*(fastcode)
+	}
+	
+    ER_RW +0
+    {
+       *(+RW, +ZI)
+    }
+
+	
+}
+
