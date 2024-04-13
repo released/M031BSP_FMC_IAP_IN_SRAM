@@ -54,7 +54,7 @@ int32_t update_ap_OnSRAM(void)
     // FMC_Open_OnSRAM();
 	// FMC_ENABLE_AP_UPDATE_OnSRAM();
     
-    printf("START update finish\r\n");    
+    printf("START update\r\n");   
     printf(".");
 
     /* Mask all interrupt before changing VECMAP to avoid wrong interrupt handler fetched */    
@@ -159,7 +159,7 @@ int32_t update_ap_OnSRAM(void)
 
     printf("\r\n");
 
-    printf("update finish , reset chip\r\n");
+    printf("update finish,reset\r\n");
     UART_WAIT_TX_EMPTY(UART0);
 
     FMC_DISABLE_AP_UPDATE();
@@ -238,7 +238,7 @@ unsigned char update_ap_check(void)
 	{
 		ap2_checksum_value = FMC_Read(ap2_checksum_addr);
 
-    	printf("%s:area 1:0x%08X,area 2::0x%08X\r\n" , __FUNCTION__ , u32FMCChecksum,ap2_checksum_value);
+    	printf("block1:0x%08X,block2::0x%08X\r\n" , u32FMCChecksum,ap2_checksum_value);
 
 		if (ap2_checksum_value != u32FMCChecksum)
 		{			
@@ -247,7 +247,7 @@ unsigned char update_ap_check(void)
 		}
 		else
 		{
-			printf("area 2 checksum same as area 1\r\n");
+			printf("block2 checksum same as block1\r\n");
 		}
 	}
 

@@ -168,7 +168,7 @@ void get_checksum(void)
     FMC_Close();
     SYS_LockReg();
 
-    printf("get_checksum = 0x%08X\r\n" , u32FMCChecksum);
+    printf("\r\nblock1=0x%08X\r\n" , u32FMCChecksum);
 }
 
 
@@ -179,10 +179,10 @@ uint8_t verify_application_chksum(uint32_t target_addr , uint32_t target_size , 
     // printf("Verify Checksum\r\n");
     
     chksum_cal = caculate_crc32_checksum(target_addr, target_size);//(g_apromSize - FMC_FLASH_PAGE_SIZE)
-    printf("Caculated .....<0x%08X>\r\n", chksum_cal);
+    printf("addr:0x%08X,Caculated:0x%08X\r\n",target_addr ,chksum_cal);
     
     chksum_app = FMC_Read(checksum_addr);    
-    printf("In APROM ......<0x%08X>\r\n", chksum_app);
+    printf("addr:0x%08X,In APROM:0x%08X\r\n",target_addr ,chksum_app);
     
     if (chksum_cal == chksum_app) {
         // printf("Verify ........<PASS>\r\n");

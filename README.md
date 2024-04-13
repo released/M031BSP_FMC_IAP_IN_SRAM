@@ -8,7 +8,7 @@ udpate @ 2024/04/11
 
 - scenario : 
 
-	- app01 binary exist in block1 (flash address : 0xF000) , app02 binary exist in block2 (flash address : 0x0000)
+	- app01 binary exist in block1 (flash address : 0x0000) , app02 binary exist in block2 (flash address : 0xF000)
 	
 	- when power on in block1 (boot from 0x0000) , will check block2 : 0xF000 checksum 
 	

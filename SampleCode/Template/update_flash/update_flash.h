@@ -5,7 +5,7 @@
 /*_____ D E C L A R A T I O N S ____________________________________________*/
 #define APP1_ADDR                                  (FMC_APROM_BASE)
 #define APP1_SIZE                                  (60*1024)   
-#define APP2_ADDR                                  (60*1024)   // 0xF000
+#define APP2_ADDR                                  (APP1_ADDR+APP1_SIZE)//(60*1024)   // 0xF000
 #define APP2_SIZE                                  (60*1024)   
 
 /*_____ D E F I N I T I O N S ______________________________________________*/
